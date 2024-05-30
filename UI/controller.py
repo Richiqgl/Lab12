@@ -29,7 +29,7 @@ class Controller:
             self._view.create_alert("NON HAI INSERITO LA NAZIONE")
             self._view.update_page()
             return
-        self.grafo=self._model.creagrafo(self._view.ddyear.value,self._view.ddcountry.value)
+        self._model.creagrafo(self._view.ddyear.value,self._view.ddcountry.value)
         self._view.txt_result.controls.append(ft.Text("Grafo creato correttamente"))
         self._view.txt_result.controls.append(ft.Text(f" Numero di vertici: {self._model.numNodes()} Numero di Archi: {self._model.numEdges()}"))
         self._view.btn_volume.disabled=False
@@ -62,7 +62,7 @@ class Controller:
         lista,costo=self._model.calcoloPercorso(numero)
         self._view.txtOut3.controls.append(ft.Text(f"peso cammino massimo: {costo}"))
         for i in range(0,len(lista)-1):
-            self._view.txtOut3.controls.append(ft.Text(self.grafo[0]))
+            self._view.txtOut3.controls.append(ft.Text(f"{lista[i].Retailer_name}-->{lista[i + 1].Retailer_name} "))
         self._view.update_page()
 
 

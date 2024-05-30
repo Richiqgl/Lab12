@@ -8,3 +8,4 @@ class Connessione():
 
     def __str__(self):
         return f"{self.codiceRetailer1}---{self.codiceRetailer2}---{self.Conto}"
+

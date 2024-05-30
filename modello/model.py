@@ -15,13 +15,13 @@ class Model:
         for verticePartenza in self._grafo.nodes:
             parziale=[verticePartenza]
             edges = []
-            self.ricorsione(parziale,numeroArchi,verticePartenza,edges)
+            self.ricorsione(parziale,numeroArchi,edges)
             parziale.pop()
         for elemento in self.bestpath:
             print(elemento)
-        #return self.bestpath,self.costo
+        return self.bestpath,self.costo
 
-    def ricorsione(self, parziale, numeroArchi,verticePartenza,edges):
+    def ricorsione(self, parziale, numeroArchi,edges):
         if len(edges)==numeroArchi:
             costoAttuale=self.calcoloCosto(parziale)
             if costoAttuale>self.costo:
@@ -33,7 +33,7 @@ class Model:
                 if self.controllo(numeroArchi,parziale,edges,vertice):
                     edges.append((parziale[-1], vertice))
                     parziale.append(vertice)
-                    self.ricorsione(parziale,numeroArchi,verticePartenza,edges)
+                    self.ricorsione(parziale,numeroArchi,edges)
                     parziale.pop()
                     edges.pop()
 
